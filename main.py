@@ -14,11 +14,21 @@ notAdded = ["test"]
 driver = s.webdriver.Chrome()
 # Open the website
 driver.get('https://peakbook.org')
+# Open log in dialog
+open_login_button = driver.find_element_by_class('login')
+open_login_button.click()
+# Enter username and password
+username_box = driver.find_element_by_name('logindata[username]')
+username_box.send_keys('hhalvorsen')
+password_box = driver.find_element_by_name('logindata[password]')
+password_box.send_keys('Jul38rus')
+# Log in
+login_button = driver.find_element_by_name('login')
+login_button.click()
 
 # Run through all mountains
 for mountain in lines:
     print(mountain)
-    # If mountain region or blank line, skip line
     # Open "Register new trip"-dialog
     # Add title
     # Check for unknown time of ascent
