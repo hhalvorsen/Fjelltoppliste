@@ -1,5 +1,4 @@
-import selenium as s
-
+from selenium import webdriver
 # Script made to automatically add the mountains I've climbed from my list into peakbook
 
 # Read mountain peaks from file
@@ -11,11 +10,11 @@ notAdded = ["test"]
 
 # Open peakbook.org and log in
 # Using Chrome to access web
-driver = s.webdriver.Chrome()
+driver = webdriver.Chrome()
 # Open the website
 driver.get('https://peakbook.org')
 # Open log in dialog
-open_login_button = driver.find_element_by_class('login')
+open_login_button = driver.find_element_by_class_name('login')
 open_login_button.click()
 # Enter username and password
 username_box = driver.find_element_by_name('logindata[username]')

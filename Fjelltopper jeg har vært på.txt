@@ -185,6 +185,5 @@ Similaun 3606
 Fineilspitze 3516
 Fluchtkogel 3500
 Hochvernagtspitze 3535
-Wildspitze 3774 
-Sveits:
+Wildspitze 3774
 Oberrothorn 3415 
