@@ -1,12 +1,13 @@
 from selenium import webdriver
+from selenium import common
 import codecs
 import time
 import re
 import additional_functions as af
 # Script made to automatically add the mountains I've climbed from my list into peakbook
 
-
-# Read mountain peaks from file
+# Read mountain peaks from file of form
+# Mountain name Mountain height
 with codecs.open('Fjelltopper jeg har vært på.txt', encoding='utf8')as f:
     lines = f.readlines()
 
@@ -44,8 +45,18 @@ for mountain_string in lines:
     register_trip_button.click()
 
     # Add title
-    title_box = driver.find_element_by_name('formdata[title]')
-    title_box.send_keys(mountain_info[0])
+    a = 0  # Iterator to keep track of number of repetitions
+    try:
+        # Check if title box exists
+        title_box = driver.find_element_by_name('formdata[title]')
+    except common.exceptions.NoSuchElementException:
+        title_box = af.try_to_find_title_box(driver)
+
+    if not title_box:
+        print("The script stopped at " + mountain_info[0])
+        break
+    else:
+        title_box.send_keys(mountain_info[0])
 
     # Check for unknown time of ascent
     time_unknown_box = driver.find_element_by_name('formdata[dateUnknown]')
@@ -73,15 +84,17 @@ for mountain_string in lines:
         for option in drop_down_options:
             # Get mountain option height
             option_text = option.find_element_by_class_name('suggestor_text').text
-            option_height = re.findall('[0-9]+', option_text)[0]
-            if af.compare_heights(mountain_info[1], option_height):
-                option.click()
-                action_line = driver.find_element_by_class_name('actionLine')
-                save_button = action_line.find_elements_by_tag_name('input')[0]
-                save_button.click()
-                break
-            else:
-                mountain_match = False
+            if re.match('[0-9]+', option_text):
+                option_height = re.findall('[0-9]+', option_text)[0]
+                if af.compare_heights(mountain_info[1], option_height):
+                    option.click()
+                    action_line = driver.find_element_by_class_name('actionLine')
+                    save_button = action_line.find_elements_by_tag_name('input')[0]
+                    save_button.click()
+                    mountain_match = True
+                    break
+                else:
+                    mountain_match = False
 
     # If unable to find mountain, add to notAdded list and continue to next mountain
     if not mountain_match:

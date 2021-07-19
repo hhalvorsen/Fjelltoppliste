@@ -1,4 +1,6 @@
 import re
+import time
+from selenium import common
 
 
 def separate_name_and_height(info):
@@ -16,6 +18,26 @@ def compare_heights(mountain_height, option_height):
         return True
     else:
         return False
+
+
+def try_to_find_title_box(driver):
+    a = 1  # Iterator to keep track of number of repetitions
+    print("Couldn't find title box, trying again. " + str(a))
+    while a > 10:
+        a = a + 1
+        time.sleep(0.5)
+        try:
+            # Check if title box exists
+            title_box = driver.find_element_by_name('formdata[title]')
+        except common.exceptions.NoSuchElementException:
+            print("Couldn't find title box, trying again. " + str(a))
+        except:
+            print("Something else went wrong. " + str(a))
+        else:
+            return title_box
+
+    return False
+
 
 
 """
