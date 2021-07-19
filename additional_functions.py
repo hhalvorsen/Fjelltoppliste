@@ -23,7 +23,7 @@ def compare_heights(mountain_height, option_height):
 def try_to_find_title_box(driver):
     a = 1  # Iterator to keep track of number of repetitions
     print("Couldn't find title box, trying again. " + str(a))
-    while a > 10:
+    while a < 10:
         a = a + 1
         time.sleep(0.5)
         try:

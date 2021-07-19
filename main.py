@@ -8,7 +8,8 @@ import additional_functions as af
 
 # Read mountain peaks from file of form
 # Mountain name Mountain height
-with codecs.open('Fjelltopper jeg har vært på.txt', encoding='utf8')as f:
+# Fjelltopper jeg har vært på
+with codecs.open('test.txt', encoding='utf8')as f:
     lines = f.readlines()
 
 # List of mountains not added to peakbook for some reason
@@ -83,18 +84,29 @@ for mountain_string in lines:
     else:
         for option in drop_down_options:
             # Get mountain option height
-            option_text = option.find_element_by_class_name('suggestor_text').text
-            if re.match('[0-9]+', option_text):
-                option_height = re.findall('[0-9]+', option_text)[0]
-                if af.compare_heights(mountain_info[1], option_height):
-                    option.click()
-                    action_line = driver.find_element_by_class_name('actionLine')
-                    save_button = action_line.find_elements_by_tag_name('input')[0]
-                    save_button.click()
-                    mountain_match = True
-                    break
+            # Some mountain names are shared by to many mountains and therefore suggestions are not listed,
+            # hence a try block is needed
+            try:
+                option_text = option.find_element_by_class_name('suggestor_text').text
+                # If suggestor_text contains numbers (mountain height)
+                if re.search('[0-9]+', option_text):
+                    option_height = re.findall('[0-9]+', option_text)[0]
+
+                    # Compare mountain height with option height
+                    if af.compare_heights(mountain_info[1], option_height):
+                        option.click()
+                        action_line = driver.find_element_by_class_name('actionLine')
+                        save_button = action_line.find_elements_by_tag_name('input')[0]
+                        save_button.click()
+                        mountain_match = True
+                        break
+                    else:
+                        mountain_match = False
                 else:
                     mountain_match = False
+            except common.exceptions.NoSuchElementException:
+                print("Problem with " + mountain_info[0])
+                mountain_match = False
 
     # If unable to find mountain, add to notAdded list and continue to next mountain
     if not mountain_match:
@@ -107,6 +119,7 @@ for mountain_string in lines:
 
 # Save notAdded in text file
 f2 = open("notAdded.txt", "w")
-f2.writelines(notAdded)
+for line in notAdded:
+    f2.write(line + '\n')
 f2.close()
 
