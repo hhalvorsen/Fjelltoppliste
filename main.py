@@ -79,6 +79,7 @@ for mountain_string in lines:
                 action_line = driver.find_element_by_class_name('actionLine')
                 save_button = action_line.find_elements_by_tag_name('input')[0]
                 save_button.click()
+                break
             else:
                 mountain_match = False
 
@@ -87,7 +88,7 @@ for mountain_string in lines:
         notAdded.append(mountain_info[0] + ' ' + mountain_info[1])
 
     # Press home button
-    home_button = driver.find_element_by_xpath("//button[contains(text(), 'Hjem')]")
+    home_button = driver.find_element_by_xpath("//a[contains(text(), 'Hjem')]")
     home_button.click()
 
     break

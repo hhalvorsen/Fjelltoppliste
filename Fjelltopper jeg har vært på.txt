@@ -186,4 +186,58 @@ Fineilspitze 3516
 Fluchtkogel 3500
 Hochvernagtspitze 3535
 Wildspitze 3774
-Oberrothorn 3415 
+Oberrothorn 3415
+Ruten 1040
+Djeveltanna 963
+Middagstinden 1006
+Skittentinden 1042
+Hollendaren 1029
+Bjørskartinden 923
+Breidalsfjellet 889
+Gråkallen 554
+Vassfjellet 711
+Åbittinden 1396
+Smørdalskammen 437
+Himmeltindan 962
+Ryten 543
+Reinebringen 448
+Svolværgeita 355
+Presten 400
+Festvågtinden 541
+Vågakallen 943
+Finnkjerka 392
+Kjelhusåsen 339
+Søre Fiskefjordtinden 967
+Hamarøyskaftet 613
+Andersnatten 733
+Hægefjell 1021
+Kjeragbolten 990
+Preikestolen 604
+Vardaheii 900
+Mefjellet 1099
+Kaldklovafjellet 165
+Gravvikheia 320
+Raudhovden 972
+Selnesklippen 175
+Slettefjellet i Hemsedal 1342
+Trondskjortetind 1512
+Skjerdingen 1519
+Henrikbotnnebba 1213
+Glennfjellet 1346
+Litlgladnedbba 1446
+Søre Grøvelnebba 1358
+Viromkjerringa 1374
+Tritindan 1609
+Hesten 1621
+Styrmannstinden 955
+Vågstinden 797
+Russelvfjellet Sør 794
+
+
+
+
+
+
+
+
+
