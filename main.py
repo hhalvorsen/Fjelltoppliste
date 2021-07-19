@@ -91,8 +91,6 @@ for mountain_string in lines:
     home_button = driver.find_element_by_xpath("//a[contains(text(), 'Hjem')]")
     home_button.click()
 
-    break
-
 
 # Save notAdded in text file
 f2 = open("notAdded.txt", "w")
