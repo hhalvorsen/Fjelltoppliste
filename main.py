@@ -1,6 +1,6 @@
 from selenium import webdriver
-from selenium.webdriver.support.ui import Select
 import codecs
+import time
 import additional_functions as af
 # Script made to automatically add the mountains I've climbed from my list into peakbook
 
@@ -56,8 +56,9 @@ for mountain_string in lines:
 
     # Choose correct mountain
     # Get options from drop down menu
-    drop_down_selector = Select(driver.find_element_by_class_name('suggestions'))
-    drop_down_options = drop_down_selector.options
+    drop_down_menu = driver.find_element_by_class_name('suggestions')
+    time.sleep(2)
+    drop_down_options = drop_down_menu.find_elements_by_tag_name('li')
 
     mountain_match = True
     # If no mountain has the same name
