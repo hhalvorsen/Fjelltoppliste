@@ -232,6 +232,30 @@ Hesten 1621
 Styrmannstinden 955
 Vågstinden 797
 Russelvfjellet Sør 794
+Hovsnebba 1554
+Snøfjellet 1579
+Snøhetta Vesttoppen 2253
+Hettpiggen 2261
+Snøhetta Midttoppen 2278
+Sula Sør 1102
+Vestre Austabotntind 2100
+Østre Kongstinden 552
+Hoven 367
+Glomtinden 419
+Tjeldbergtinden 367
+Dronningtinden 437
+Straumdalstinden 905
+Rismålstinden 699
+Bjørntinden 887
+Øst for Breivikskaret 680
+Kvittinden 517
+Stampen 574
+Vatterfjordtinden 576
+Stetinden 1391
+
+
+
+
 
 
 
