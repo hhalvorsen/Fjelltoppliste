@@ -9,6 +9,15 @@ def separate_name_and_height(info):
     return [mountain_name, mountain_height]
 
 
+def compare_heights(mountain_height, option_height):
+    mh = int(mountain_height)
+    oh = int(option_height)
+    if abs(mh-oh) < 3:
+        return True
+    else:
+        return False
+
+
 """
 # Testing functions
 # Read mountain peaks from file
@@ -19,5 +28,10 @@ with codecs.open('test.txt', encoding='utf8') as f:
 test_list = separate_name_and_height(lines[0])
 print(test_list[0])
 print(test_list[1])
-"""
 
+
+print(compare_heights(200, 200))
+print(compare_heights(201, 200))
+print(compare_heights(200, 199))
+print(compare_heights(200, 197))
+"""

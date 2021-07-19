@@ -1,6 +1,7 @@
 from selenium import webdriver
 import codecs
 import time
+import re
 import additional_functions as af
 # Script made to automatically add the mountains I've climbed from my list into peakbook
 
@@ -55,22 +56,40 @@ for mountain_string in lines:
     mountain_box.send_keys(mountain_info[0])
 
     # Choose correct mountain
-    # Get options from drop down menu
+    # Select drop down menu
     drop_down_menu = driver.find_element_by_class_name('suggestions')
-    time.sleep(2)
+
+    # Sleep to let search load
+    time.sleep(0.5)
+
+    # Get options from drop down menu
     drop_down_options = drop_down_menu.find_elements_by_tag_name('li')
 
     mountain_match = True
     # If no mountain has the same name
     if len(drop_down_options) == 0:
-        notAdded.append(mountain_info[0] + ' ' + mountain_info[1])
         mountain_match = False
     else:
         for option in drop_down_options:
-            option_height = option.find_element_by_class_name('suggestor_text')
-            print(option_height.text)
-        # If unable to find mountain, add to notAdded list and continue to next mountain
+            # Get mountain option height
+            option_text = option.find_element_by_class_name('suggestor_text').text
+            option_height = re.findall('[0-9]+', option_text)[0]
+            if af.compare_heights(mountain_info[1], option_height):
+                option.click()
+                action_line = driver.find_element_by_class_name('actionLine')
+                save_button = action_line.find_elements_by_tag_name('input')[0]
+                save_button.click()
+            else:
+                mountain_match = False
+
+    # If unable to find mountain, add to notAdded list and continue to next mountain
+    if not mountain_match:
+        notAdded.append(mountain_info[0] + ' ' + mountain_info[1])
+
     # Press home button
+    home_button = driver.find_element_by_xpath("//button[contains(text(), 'Hjem')]")
+    home_button.click()
+
     break
 
 
