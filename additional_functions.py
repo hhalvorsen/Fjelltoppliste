@@ -5,6 +5,7 @@ from selenium import common
 
 def separate_name_and_height(info):
     # Separate mountain name and height
+    print(info)
     mountain_height = re.findall('[0-9]+', info)[0]
     mountain_name_match = re.search('[0-9]+', info)
     mountain_name = info[:mountain_name_match.start()-1]
