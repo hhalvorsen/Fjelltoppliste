@@ -1,2 +1,2 @@
 # Fjell-liste
-Bruker python med selenium til å styre nettsiden peakbook.org for å legge fjelltopper jeg har vært på over fra en tekstfil og inn på Peakbook
+Jeg hadde en lang liste med fjelltopper jeg har vært på som jeg ville legge inn på brukeren min på peakbook.org. For å automatisere dette brukte jeg python med selenium til å styre nettsiden og legge fjelltoppene over fra en tekstfil og inn på Peakbook
